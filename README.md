@@ -25,6 +25,34 @@ This works because:
 
 ## Usage
 
+### Getting Help
+
+There are two ways to get help:
+
+1. Using the `help` command:
+
+```powershell
+# General help
+pplx help
+
+# Help for a specific command
+pplx help ask
+pplx help models
+```
+
+2. Using the `--help` flag:
+
+```powershell
+# General help
+pplx --help
+
+# Help for a specific command
+pplx ask --help
+pplx models --help
+```
+
+Both methods provide similar information, but the `help` command offers more detailed examples and usage information.
+
 ### Configuration
 
 Your API key is already configured. If you need to update it:
@@ -109,6 +137,18 @@ If you encounter any issues:
    cd "C:\Users\Owner\Documents\Github_Repositories\perplexity-cli-tool"
    python install.py
    ```
+
+## Command Reference
+
+| Command     | Description                     | Example                                 |
+| ----------- | ------------------------------- | --------------------------------------- |
+| `ask`       | Ask a question to Perplexity AI | `pplx ask "What is quantum computing?"` |
+| `models`    | List available models           | `pplx models`                           |
+| `configure` | Configure your API key          | `pplx configure`                        |
+| `debug`     | Show debugging information      | `pplx debug`                            |
+| `help`      | Show detailed help information  | `pplx help` or `pplx help ask`          |
+| `--help`    | Show help information           | `pplx --help` or `pplx ask --help`      |
+| `--version` | Show version information        | `pplx --version`                        |
 
 ## Advanced Usage
 

@@ -157,5 +157,117 @@ def debug():
     else:
         console.print("[bold yellow]No API key configured[/bold yellow]")
 
+@app.command()
+def help(
+    command: Optional[str] = typer.Argument(None, help="Command to get help for")
+):
+    """Show help information for commands.
+
+    If no command is specified, shows general help.
+    """
+    if command is None:
+        # Show general help
+        console.print("[bold]Perplexity CLI Help[/bold]")
+        console.print("A command-line interface for querying the Perplexity AI API.\n")
+
+        # Create a table for commands
+        table = Table(show_header=True)
+        table.add_column("Command", style="cyan")
+        table.add_column("Description", style="yellow")
+
+        # Add commands to the table
+        table.add_row("ask", "Ask a question to Perplexity AI")
+        table.add_row("models", "List available Perplexity models")
+        table.add_row("configure", "Configure your API key")
+        table.add_row("debug", "Show debugging information")
+        table.add_row("help", "Show this help information")
+
+        console.print(table)
+
+        console.print("\n[bold]Usage:[/bold]")
+        console.print("  pplx [command] [options]")
+
+        console.print("\n[bold]Examples:[/bold]")
+        console.print("  pplx ask \"What is the capital of France?\"")
+        console.print("  pplx ask --model sonar-reasoning \"Explain quantum computing\"")
+        console.print("  pplx models")
+        console.print("  pplx help ask")
+
+        console.print("\n[bold]Options:[/bold]")
+        console.print("  --help    Show help for a command")
+        console.print("  --version Show version information")
+    elif command == "ask":
+        console.print("[bold]Help for 'ask' command:[/bold]")
+        console.print("Ask a question to Perplexity AI.\n")
+
+        console.print("[bold]Usage:[/bold]")
+        console.print("  pplx ask [OPTIONS] QUESTION")
+
+        console.print("\n[bold]Options:[/bold]")
+        console.print("  -m, --model TEXT  The model to use (default: sonar-pro)")
+        console.print("  -r, --raw         Show raw JSON response")
+        console.print("  --help            Show this message and exit")
+
+        console.print("\n[bold]Examples:[/bold]")
+        console.print("  pplx ask \"What is the capital of France?\"")
+        console.print("  pplx ask What is the capital of France?")
+        console.print("  pplx ask --model sonar-reasoning \"Explain quantum computing\"")
+        console.print("  pplx ask --raw \"What is the speed of light?\"")
+    elif command == "models":
+        console.print("[bold]Help for 'models' command:[/bold]")
+        console.print("List available Perplexity models.\n")
+
+        console.print("[bold]Usage:[/bold]")
+        console.print("  pplx models [OPTIONS]")
+
+        console.print("\n[bold]Options:[/bold]")
+        console.print("  --help  Show this message and exit")
+
+        console.print("\n[bold]Examples:[/bold]")
+        console.print("  pplx models")
+    elif command == "configure":
+        console.print("[bold]Help for 'configure' command:[/bold]")
+        console.print("Configure the Perplexity API key.\n")
+
+        console.print("[bold]Usage:[/bold]")
+        console.print("  pplx configure [OPTIONS]")
+
+        console.print("\n[bold]Options:[/bold]")
+        console.print("  --help  Show this message and exit")
+
+        console.print("\n[bold]Examples:[/bold]")
+        console.print("  pplx configure")
+    elif command == "debug":
+        console.print("[bold]Help for 'debug' command:[/bold]")
+        console.print("Show debugging information for troubleshooting.\n")
+
+        console.print("[bold]Usage:[/bold]")
+        console.print("  pplx debug [OPTIONS]")
+
+        console.print("\n[bold]Options:[/bold]")
+        console.print("  --help  Show this message and exit")
+
+        console.print("\n[bold]Examples:[/bold]")
+        console.print("  pplx debug")
+    elif command == "help":
+        console.print("[bold]Help for 'help' command:[/bold]")
+        console.print("Show help information for commands.\n")
+
+        console.print("[bold]Usage:[/bold]")
+        console.print("  pplx help [COMMAND]")
+
+        console.print("\n[bold]Arguments:[/bold]")
+        console.print("  COMMAND  Command to get help for")
+
+        console.print("\n[bold]Options:[/bold]")
+        console.print("  --help  Show this message and exit")
+
+        console.print("\n[bold]Examples:[/bold]")
+        console.print("  pplx help")
+        console.print("  pplx help ask")
+    else:
+        console.print(f"[bold red]Error:[/bold red] Unknown command '{command}'")
+        console.print("Run 'pplx help' to see available commands.")
+
 if __name__ == "__main__":
     app()
